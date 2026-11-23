@@ -2,7 +2,6 @@ package br.net.galdino.model;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,9 +15,6 @@ public class Contato {
 
     @Column(nullable = false, length = 100)
     private String nome;
-
-    @Column(name = "data_de_nascimento")
-    private LocalDate dataDeNascimento;
 
     @OneToMany(mappedBy = "contato", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Endereco> enderecos = new ArrayList<>();
@@ -46,14 +42,6 @@ public class Contato {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public LocalDate getDataDeNascimento() {
-        return dataDeNascimento;
-    }
-
-    public void setDataDeNascimento(LocalDate dataDeNascimento) {
-        this.dataDeNascimento = dataDeNascimento;
     }
 
     public List<Endereco> getEnderecos() {
